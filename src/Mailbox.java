@@ -59,7 +59,7 @@ public class Mailbox {
 
     		// Send email. 
     		Transport.send(message); 
-    		System.out.println("Mail successfully sent"); 
+    		System.out.println("Paid successfully, Check your Mailbox. "); 
     	} 
     	catch (MessagingException mex) 
     	{ 

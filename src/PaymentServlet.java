@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Properties;
 
  
@@ -33,9 +34,17 @@ public class PaymentServlet extends HttpServlet {
                 requestDispatcher.forward(request, response);
             } 
         	else if(email!=null && null==pass) {
+        		HashMap<String, Integer> priceMap = new  HashMap<String, Integer>();
+        		priceMap.put("basic", 10);
+        		priceMap.put("premium", 12);
+        		priceMap.put("pro", 15);
+        		String plan = request.getParameter("plan");
+        		System.out.println(plan);
         		   response.setContentType("text/html");
         		    PrintWriter out = response.getWriter();
-        		    out.println("<h2> Mail Sent successfully !!! </h2>");
+        		    out.println("<h2> The selected plan is: " + plan + " </h2>"
+        		    		+ "The payment details sent to: "+ email +
+        		    		"</br> Total amount paid is : " + priceMap.get(plan) + "$.");
         		    out.close();
         	    	String sender = "CMPE273Project@sjsu.com"; 
         	    	String host = "localhost"; 
